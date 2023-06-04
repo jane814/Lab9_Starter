@@ -179,6 +179,7 @@
         let result = isNaN(output.innerHTML);
         if(result == true){
           throw new Error("Undefined Value!");
+        }
        }catch(error){
          console.log("calculation error:"+error.message);
        }finally{
