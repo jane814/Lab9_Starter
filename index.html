@@ -102,6 +102,81 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    function log(){
+      console.log("This is a log");
+    }
+    function error(){
+      console.error("You have run into an error.");
+    }
+    function count(){
+      console.count();
+      console.count();
+      console.count("smoothie");
+    }
+    function warn(){
+      console.warn("This is a warning!");
+    }
+    function assert(){
+      const x= 1;
+      const y=2;
+      const reason = "result is expected to be 3";
+      console.assert(x+y==3,{x,y,reason});
+    }
+    function clear(){
+      console.clear();
+    }
+    function dir(){
+      console.dir(document.head);
+    }
+    function dirxml(){
+      console.dirxml(document);
+    }
+    function group_start(){
+      const label = "ice cream flavors";
+      console.group(label);
+      console.info("vanilla");
+      console.info("chocolate");
+      console.info("strawberry");
+    }
+    function group_end(){
+      const label = "ice cream flavors";
+      console.groupEnd(label);
+    }
+    function timer_start(){
+      const label = "timer";
+      console.time(label);
+    }
+    function timer_end(){
+      const label = "timer";
+      console.timeEnd(label);
+    }
+    function trace(){
+      const first = () => {second(); };
+      const second = () => {third(); };
+      const third = () => {fourth(); };
+      const fourth = () => {console.trace(); };
+      first();
+    }
+    function table(){
+      var orders = [
+        {
+          flavor:vanilla,
+          scoops:1,
+        },
+        {
+          flavor:cherry jubilee,
+          scoops:2,
+        },
+        {
+          flavor:rocky road,
+          scoops:2
+        }
+      ];
+      console.table(orders);
+    }
+    function global_error(){
+      
+    }
   </script>
 </body>
 
