@@ -69,21 +69,21 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button onclick = "log()">Console Log</button>
+      <button onclick = "error()">Console Error</button>
+      <button onclick = "count()">Console Count</button>
+      <button onclick = "warn()">Console Warn</button>
+      <button onclick = "assert()">Console Assert</button>
+      <button onclick = "clear()">Console Clear</button>
+      <button onclick = "dir()">Console Dir</button>
+      <button onclick = "dirxml()">Console dirxml</button>
+      <button onclick = "group_start()">Console Group Start</button>
+      <button onclick = "group_end()">Console Group End</button>
+      <button onclick = "table()">Console Table</button>
+      <button onclick = "timer_start()">Start Timer</button>
+      <button onclick = "timer_end()">End Timer</button>
+      <button onclick = "trace()">Console Trace</button>
+      <button onclick = "global_error()">Trigger a Global Error</button>
     </section>
   </main>
 
@@ -95,7 +95,17 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      try{
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+        let result = isNaN(output.innerHTML);
+        if(result == true){
+          throw new Error("Undefined Value!");
+       }catch(error){
+         console.log("calculation error:"+error.message);
+       }finally{
+         console.log("calculation complete");
+       }
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -175,7 +185,10 @@
       console.table(orders);
     }
     function global_error(){
-      
+      window.onerror = function(message, url, line, col, error) {
+        console.log(`${message}\n At ${line}:${col} of ${url}`);
+      };
+      randomFunc();
     }
   </script>
 </body>
